@@ -14,7 +14,7 @@ def register_complaint(user_input):
     save_to_file(translated_complaint)
 
 def save_to_file(complaint):
-    with open("complaints.txt", "a", encoding="utf-8") as file:
+    with open("complaints.txt", "a", encoding="utf-8") as file: 
         file.write(complaint + "\n")
 
 if name == "main":
