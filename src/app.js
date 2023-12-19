@@ -55,7 +55,7 @@ passport.deserializeUser(User.deserializeUser());
 main().catch((err) => console.log(err));
 
 async function main() {
-  await mongoose.connect("mongodb://127.0.0.1:27017/SSIP-Hackathone-2k23");
+  await mongoose.connect("mongodb://127.0.0.1:27017/RJPOLICE_HACK_1369_Techmates_4");
   console.log("Database connected");
 }
 
