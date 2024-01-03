@@ -55,6 +55,19 @@
 </head>
 <body>
 
+    {{#if success}}
+    <div class="alert alert-success">
+        {{success}}
+    </div>
+    {{/if}}
+    
+    <!-- Display error flash message -->
+    {{#if error}}
+    <div class="alert alert-danger">
+        {{error}}
+    </div>
+    {{/if}}
+
 <div class="dashboard">
     <h1>Rajasthan Police Dashboard</h1>
 </div>

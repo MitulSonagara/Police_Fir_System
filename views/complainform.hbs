@@ -68,11 +68,17 @@
         }
     </style>
 </head>
+
 <body>
 
     <div class="complaint-form">
         <h1>Rajasthan Police - Complaint Form</span></h1>
     </div>
+
+    <!-- views/dashboard.hbs -->
+
+    <!-- Display success flash message -->
+   
 
     <div class="form-container">
         <form action="/complainform" method="post">
@@ -122,7 +128,7 @@
                 </label>
             </div>
 
-            <!-- Upload identity proof --> 
+            <!-- Upload identity proof -->
             <input type="text" name="proof" class="form-input" placeholder="Enter Identity Proof Number" required>
 
             <!-- Submit button -->
@@ -130,34 +136,6 @@
         </form>
     </div>
 
-    <!-- Include this script in your HTML file -->
-<script>
-  document.addEventListener('DOMContentLoaded', function () {
-    const form = document.querySelector('form');
-
-    form.addEventListener('submit', async function (event) {
-      event.preventDefault();
-
-      // Use fetch or your preferred method to submit the form data
-      const formData = new FormData(form);
-      const response = await fetch('/complainform', {
-        method: 'POST',
-        body: formData
-      });
-
-      const responseData = await response.json();
-
-      if (response.ok) {
-        // Form submitted successfully, display an alert
-        alert(responseData.message);
-        // Redirect to the dashboard route
-        window.location.href = '/dashboard';
-      } else {
-        // Handle errors or display an error message
-        alert('Form submission failed. Please try again.');
-      }
-    });
-  });
-</script>
 </body>
+
 </html>
