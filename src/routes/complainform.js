@@ -11,7 +11,7 @@ router.get("/complainform", (req, res) => {
 // File Complaint Route
 router.post('/complainform', async (req, res, next) => {
     // Handle filing complaint logic here
-    try {
+
         const newComplainForm = new Complain({
             name: req.body.name,
             number: req.body.number,
@@ -28,13 +28,10 @@ router.post('/complainform', async (req, res, next) => {
             proof: req.body.proof // Use the file path or reference returned by multer
         });
 
-         await newComplainForm.save();
-         res.redirect("/dashboard")
-        // res.status(201).json({ message: 'Form submitted successfully', data: savedComplainForm });
-    } catch (error) {
-        console.error(error);
-        res.status(500).json({ message: 'Internal Server Error' });
-    }    
+         const savedComplainForm = await newComplainForm.save();
+        //  res.redirect("/dashboard")
+        res.status(201).json({ message: 'Form submitted successfully', data: savedComplainForm });
+      
 });
 module.exports = router;
 // Add more routes as needed
