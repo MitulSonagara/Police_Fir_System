@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rajasthan Police - Complaint Form</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+            color: #333;
+        }
+
+        .complaint-form {
+            background: linear-gradient(to right, #1a237e, #dc3545);
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+            border-bottom-left-radius: 15px;
+            border-bottom-right-radius: 15px;
+        }
+
+        .form-container {
+            max-width: 600px;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 15px;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+
+        .form-radio-label {
+            display: block;
+            margin-bottom: 20px;
+        }
+
+        .form-radio-input {
+            margin-right: 10px;
+        }
+
+        .form-submit {
+            background-color: #000;
+            color: #fff;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 18px;
+            transition: background-color 0.3s;
+        }
+
+        .form-submit:hover {
+            background-color: #007bff;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="complaint-form">
+        <h1>Rajasthan Police - Complaint Form</span></h1>
+    </div>
+
+    <div class="form-container">
+        <form action="/complainform" method="post">
+            <!-- Name of person reporting incident -->
+            <input type="text" name="name" class="form-input" placeholder="Name of Person Reporting Incident*" required>
+
+            <!-- Phone number -->
+            <input type="tel" name="number" class="form-input" placeholder="Phone Number*" required>
+
+            <!-- Email -->
+            <input type="email" name="email" class="form-input" placeholder="Email*" required>
+
+            <!-- Date of incident -->
+            <input type="date" name="date" class="form-input" required>
+
+            <!-- Location of incident -->
+            <input type="text" name="loc" class="form-input" placeholder="Location of Incident*" required>
+
+            <!-- Pincode -->
+            <input type="text" name="pin" class="form-input" placeholder="Pincode*" required>
+
+            <!-- City -->
+            <input type="text" name="city" class="form-input" placeholder="City*" required>
+
+            <!-- State -->
+            <input type="text" name="state" class="form-input" placeholder="State*" required>
+
+            <!-- Country -->
+            <input type="text" name="country" class="form-input" placeholder="Country*" required>
+
+            <!-- Describe the incident -->
+            <textarea class="form-input" name="dis" placeholder="Describe the Incident*" required></textarea>
+
+            <!-- Number of people involved -->
+            <input type="number" name="people" class="form-input" placeholder="Number of People Involved*" required>
+
+            <!-- Select identity proof -->
+            <div class="form-radio-label">Select Identity Proof*:
+                <label class="form-radio-input">
+                    <input type="radio" name="identityProof" value="aadhar"> Aadhar Card
+                </label>
+                <label class="form-radio-input">
+                    <input type="radio" name="identityProof" value="pan"> PAN Card
+                </label>
+                <label class="form-radio-input">
+                    <input type="radio" name="identityProof" value="voterID"> Voter ID
+                </label>
+            </div>
+
+            <!-- Upload identity proof --> 
+            <input type="text" name="proof" class="form-input" placeholder="Enter Identity Proof Number" required>
+
+            <!-- Submit button -->
+            <button type="submit" class="form-submit">Submit</button>
+        </form>
+    </div>
+
+    <!-- Include this script in your HTML file -->
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const form = document.querySelector('form');
+
+    form.addEventListener('submit', async function (event) {
+      event.preventDefault();
+
+      // Use fetch or your preferred method to submit the form data
+      const formData = new FormData(form);
+      const response = await fetch('/complainform', {
+        method: 'POST',
+        body: formData
+      });
+
+      const responseData = await response.json();
+
+      if (response.ok) {
+        // Form submitted successfully, display an alert
+        alert(responseData.message);
+        // Redirect to the dashboard route
+        window.location.href = '/dashboard';
+      } else {
+        // Handle errors or display an error message
+        alert('Form submission failed. Please try again.');
+      }
+    });
+  });
+</script>
+</body>
+</html>
